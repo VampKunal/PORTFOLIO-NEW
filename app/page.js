@@ -1,3 +1,6 @@
-import Hero from "./hero/page";
+import { redirect } from 'next/navigation';
 
-export default Hero;
+export default function Page() {
+  redirect('/hero');
+  return null;
+}

@@ -9,7 +9,7 @@ export const Cover = ({
   children,
   className
 }) => {
-  const [hovered, setHovered] = useState(false);
+  const [hovered, setHovered] = useState(true);
 
   const ref = useRef(null);
 
@@ -32,10 +32,8 @@ export const Cover = ({
 
   return (
     <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
       ref={ref}
-      className="relative hover:bg-neutral-900  group/cover inline-block dark:bg-neutral-900 bg-neutral-100 px-2 py-2  transition duration-200 rounded-sm">
+      className="relative group/cover inline-block bg-black px-2 py-2  transition duration-200 rounded-sm">
       <AnimatePresence>
         {hovered && (
           <motion.div
@@ -62,75 +60,33 @@ export const Cover = ({
               className="w-[200%] h-full flex">
               <SparklesCore
                 background="transparent"
-                minSize={0.4}
-                maxSize={1}
-                particleDensity={500}
+                minSize={0.6}
+                maxSize={1.2}
+                particleDensity={800}
                 className="w-full h-full"
-                particleColor="#FFFFFF" />
+                particleColor="#FFFFFF"
+                speed={2} />
               <SparklesCore
                 background="transparent"
-                minSize={0.4}
-                maxSize={1}
-                particleDensity={500}
+                minSize={0.3}
+                maxSize={0.8}
+                particleDensity={600}
                 className="w-full h-full"
-                particleColor="#FFFFFF" />
+                particleColor="#3b82f6"
+                speed={1.5} />
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-      {beamPositions.map((position, index) => (
-        <Beam
-          key={index}
-          hovered={hovered}
-          duration={Math.random() * 2 + 1}
-          delay={Math.random() * 2 + 1}
-          width={containerWidth}
-          style={{
-            top: `${position}px`,
-          }} />
-      ))}
-      <motion.span
-        key={String(hovered)}
-        animate={{
-          scale: hovered ? 0.8 : 1,
-          x: hovered ? [0, -30, 30, -30, 30, 0] : 0,
-          y: hovered ? [0, 30, -30, 30, -30, 0] : 0,
-        }}
-        exit={{
-          filter: "none",
-          scale: 1,
-          x: 0,
-          y: 0,
-        }}
-        transition={{
-          duration: 0.2,
-          x: {
-            duration: 0.2,
-            repeat: Infinity,
-            repeatType: "loop",
-          },
-          y: {
-            duration: 0.2,
-            repeat: Infinity,
-            repeatType: "loop",
-          },
-          scale: {
-            duration: 0.2,
-          },
-          filter: {
-            duration: 0.2,
-          },
-        }}
+
+      <span
         className={cn(
-          "dark:text-white inline-block text-neutral-900 relative z-20 group-hover/cover:text-white transition duration-200",
+          "text-white inline-block relative z-20",
           className
         )}>
         {children}
-      </motion.span>
-      <CircleIcon className="absolute -right-[2px] -top-[2px]" />
-      <CircleIcon className="absolute -bottom-[2px] -right-[2px]" delay={0.4} />
-      <CircleIcon className="absolute -left-[2px] -top-[2px]" delay={0.8} />
-      <CircleIcon className="absolute -bottom-[2px] -left-[2px]" delay={1.6} />
+      </span>
+
     </div>
   );
 };

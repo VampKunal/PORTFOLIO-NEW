@@ -1,5 +1,5 @@
 // All constants for the Hero page
-import { IconHome, IconUser, IconMessage } from "@tabler/icons-react";
+import { IconHome, IconMessage, IconBook, IconCertificate, IconBolt } from "@tabler/icons-react";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import {
   IconBrandGithub,
@@ -8,7 +8,7 @@ import {
   IconBrandInstagram,
 } from "@tabler/icons-react";
 import {
-  IconBook,
+  
   IconSchool,
 } from "@tabler/icons-react";
 export const links = [
@@ -35,51 +35,52 @@ export const links = [
 ];
 export const navItems = [
   {
-    name: "Home",
-    link: "/",
+    title: "Home",
+    href: "/hero",
     icon: <IconHome className="h-4 w-4 text-neutral-500 dark:text-white" />,
   },
   {
-    name: "About",
-    link: "/about",
-    icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
+    title: "Skills",
+    href: "/skills",
+    icon: <IconBolt className="h-4 w-4 text-neutral-500 dark:text-white" />,
   },
   {
-    name: "Projects",
-    link: "/projects",
+    title: "Projects",
+    href: "/projects",
     icon: <IconBook className="h-4 w-4 text-neutral-500 dark:text-white" />,
   },
   {
-    name: "Education",
-    link: "/education",
-    icon: <IconSchool className="h-4 w-4 text-neutral-500 dark:text-white" />,
+    title: "Certifications",
+    href: "/certifications",
+    icon: <IconCertificate className="h-4 w-4 text-neutral-500 dark:text-white" />,
+  },
+  {
+    title: "Contact",
+    href: "/contact",
+    icon: <IconMessage className="h-4 w-4 text-neutral-500 dark:text-white" />,
   },
 ];
 
 export const colors = ["#06b6d4", "#3b82f6", "#6366f1"];
 
-
-
-  export const code = `const DummyComponent = () => {
-  const [count, setCount] = React.useState(0);
- 
-  const handleClick = () => {
-    setCount(prev => prev + 1);
-  };
+export const code = `const KunalRai = () => {
+  const [skills] = React.useState([
+    "React", "Node.js", "Next.js", 
+    "TypeScript", "MongoDB", "PostgreSQL"
+  ]);
  
   return (
-    <div className="p-4 border rounded-lg">
-      <h2 className="text-xl font-bold mb-4">Fights Counter</h2>
-      <p className="mb-2">Fight Club Fights Count: {count}</p>
-      <button 
-        onClick={handleClick}
-        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-      >
-        Increment
-      </button>
+    <div className="p-3 border rounded">
+      <h3 className="font-bold mb-2">Skills</h3>
+      <div className="flex flex-wrap gap-1">
+        {skills.map(skill => (
+          <span key={skill} className="px-2 py-1 bg-blue-500 text-white text-xs rounded">
+            {skill}
+          </span>
+        ))}
+      </div>
     </div>
   );
-};
-`;
+};`;
 
 
